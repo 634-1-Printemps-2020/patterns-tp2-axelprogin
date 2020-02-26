@@ -4,7 +4,6 @@ public class Statistics {
 
   // Le nombre moyen de lancers pour gagner une partie
   private float averageToWin;
-
   // Le nombre le plus petit de lancers pour avoir gagné une partie
   private int fewerMovesToWin;
   // Le nombre le plus grand de lancers pour avoir gagné une partie

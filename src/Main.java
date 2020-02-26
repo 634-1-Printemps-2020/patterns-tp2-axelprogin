@@ -1,5 +1,11 @@
 import game.Game;
+import game.Rules;
+import materials.Coin;
+import materials.CoinState;
 import player.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -16,7 +22,6 @@ public class Main {
 
     System.out.println(game.getHistory());
     System.out.println(game.getStatistics());
-
 
     System.out.println(game.getSpecificHistory(new Player(1)));
   }

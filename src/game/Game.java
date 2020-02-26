@@ -5,6 +5,7 @@ import materials.CoinState;
 import player.Player;
 import utils.Statistics;
 
+import javax.print.DocFlavor;
 import java.util.*;
 
 public class Game {
@@ -15,6 +16,8 @@ public class Game {
 
     public Game() {
         history = new HashMap<>();
+        rules = Rules.getInstance();
+        coin = Coin.getInstance();
     }
 
     /**
@@ -23,14 +26,22 @@ public class Game {
      * @param player le nouveau joueur
      */
     public void addPlayer(Player player) {
-      // TODO: Votre code ici
+      history.put(player, new ArrayList<>());
     }
 
     /**
      * Faire joueur tous les joueurs et stocker chaque partie dans history
      */
     public void play() {
-      // TODO: Votre code ici
+        List<CoinState> listLances;
+        for (Player p : history.keySet()){
+            listLances = history.get(p);
+            while (!rules.checkWin(listLances)){
+                coin.throwCoin();
+                listLances.add(coin.getState());
+            }
+            history.put(p,listLances);
+        }
     }
 
     /**
@@ -49,8 +60,7 @@ public class Game {
      * @return Map contenant chaque joueur et la liste des ses lancers
      */
     public Map<Player, List<CoinState>> getHistory() {
-      // TODO: Votre code ici
-      return null;
+      return history;
     }
 
 
@@ -61,8 +71,7 @@ public class Game {
      * @return la liste des lancers d'un joueur
      */
     public List<CoinState> getSpecificHistory(Player player) {
-      // TODO: Votre code ici
-      return null;
+      return history.get(player);
     }
 
 }
